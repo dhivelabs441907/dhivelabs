@@ -77,7 +77,7 @@ def login():
 @app.route("/new", methods=["GET", "POST"])
 def new():
     if request.method == "GET":
-        return render_template("new.html")
+        return render_template("new.html", user=g.user)
     else:
         data = request.form.to_dict(flat=True)
         new_reciver = Recivers(name=data["name"], items=data["items"], date=data["date"], manager=data["manager"],
@@ -86,6 +86,12 @@ def new():
         db.session.commit()
         return redirect(url_for('index'))
 
+@app.route("/delete/<string:id>", methods=["GET"])
+def delete(id):
+        reciver = Recivers.query.filter_by(id=id).first()
+        db.session.delete(reciver)
+        db.session.commit()
+        return redirect(url_for('index'))
 
 @app.route("/edit/<string:id>", methods=["GET", "POST"])
 def edit(id):
@@ -125,7 +131,7 @@ def index():
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
-    return redirect(url_for('login'))
+    return render_template("auth/logout.html")
 
 
 @app.route("/users")
@@ -145,9 +151,18 @@ def new_user():
         return render_template("users/new.html", user=g.user)
     else:
         data = request.form.to_dict(flat=True)
-        new_user = Users(firstname=data["firstname"], lastname=data["lastname"],
-                         phone=data["mobile"], email=data["email"], role=data["role"], password=data["password"])
-        db.session.add(new_user)
+        user = Users.query.filter_by(email=data["email"]).all()
+        if len(user) == 0:
+            new_user = Users(firstname=data["firstname"], lastname=data["lastname"],
+                            phone=data["mobile"], email=data["email"], role=data["role"], password=data["password"])
+            db.session.add(new_user)
+            db.session.commit()
+        return redirect(url_for('users'))
+
+@app.route("/user/delete/<string:id>", methods=["GET"])
+def delete_user(id):
+        reciver = Users.query.filter_by(id=id).first()
+        db.session.delete(reciver)
         db.session.commit()
         return redirect(url_for('users'))
 

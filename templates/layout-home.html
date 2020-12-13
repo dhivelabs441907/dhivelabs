@@ -100,7 +100,7 @@
                       <i class="mdi mdi-account-circle mr-1"></i>
                       <span>My Account</span>
                     </a>
-
+                    {% if user.role in ["Admin", "Founder", "Co-Founder", "Innovator"]%}
                     <!-- item-->
                     <a
                       href="{{url_for('users')}}"
@@ -109,7 +109,7 @@
                       <i class="mdi mdi-account-group mr-1"></i>
                       <span>Users</span>
                     </a>
-
+                    {%endif%}
                     <!-- item-->
                     <a
                       href="{{url_for('logout')}}"

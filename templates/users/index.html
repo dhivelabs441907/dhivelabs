@@ -39,8 +39,7 @@
                 <div class="dropdown">
                     <i style="cursor: pointer;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="mdi mdi-dots-vertical text-warning" style="font-size: 20px;"></i>
                     <div class="dropdown-menu dropdown-menu-animated">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Delete</a>
+                        <a class="dropdown-item" href="{{url_for('delete_user', id=u.id)}}">Delete</a>
                         <a class="dropdown-item" href="#">Change Password</a>
                     </div>
                 </div>
