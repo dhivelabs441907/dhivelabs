@@ -1,0 +1,65 @@
+{% extends "layout-home.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- start page title -->
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex">
+        <h4 class="page-title">Dashboard</h4>
+        <div class="ml-auto mt-3">
+          <a href="{{url_for('new')}}" class="btn btn-warning">Add New</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-6">
+      <div class="table-responsive-sm">
+        <table class="table table-centered mb-0">
+          <thead class="thead-light">
+            <tr>
+              <th>Action</th>
+              <th>Name</th>
+              <th>Items</th>
+              <th>Date</th>
+              <th>Manager</th>
+              <th>Total Fees</th>
+              <th>Returning Date From Reciver</th>
+              <th>Fees Status</th>
+              <th>Return Date</th>
+              <th>Return To</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in recivers %}
+            <tr>
+              <td>
+                <div class="d-flex">
+                  <div>
+                <a
+                  href="{{url_for('edit', id=r.id)}}"
+                  class="dripicons-pencil btn btn-sm btn-warning"
+                ></a></div>
+                </div>
+              </td>
+              <td>{{r.name}}</td>
+              <td>{{r.items}}</td>
+              <td>{{r.date}}</td>
+              <td>{{r.manager}}</td>
+              <td>₹ {{r.fees}}</td>
+              <td>{{r.returning_date}}</td>
+              {% if r.fees_status == 'Unpaid' %}
+                <td><i class="mdi mdi-circle text-danger mr-1"></i>{{r.fees_status}}</td>
+              {%else%}
+                <td><i class="mdi mdi-circle text-success mr-1"></i>{{r.fees_status}}</td>
+              {%endif%}
+              <td>{{r.return_date}}</td>
+              <td>{{r.return_to}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>

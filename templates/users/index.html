@@ -1,0 +1,56 @@
+{% extends "layout-home.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- start page title -->
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex">
+        <h4 class="page-title">Users</h4>
+        <div class="ml-auto mt-3">
+          <a href="{{url_for('new_user')}}" class="btn btn-warning"> Add New </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-6">
+      <div class="table-responsive-sm">
+        <table class="table table-centered mb-0">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Mobile Number</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{u.id}}</td>
+              <td>{{u.firstname}}</td>
+              <td>{{u.lastname}}</td>
+              <td>{{u.phone}}</td>
+              <td>{{u.email}}</td>
+              <td>{{u.role}}</td>
+              <td>
+                <div class="dropdown">
+                    <i style="cursor: pointer;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="mdi mdi-dots-vertical text-warning" style="font-size: 20px;"></i>
+                    <div class="dropdown-menu dropdown-menu-animated">
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Delete</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                    </div>
+                </div>
+            </td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>

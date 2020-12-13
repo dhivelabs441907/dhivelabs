@@ -1,0 +1,69 @@
+{% extends "layout-home.html" %} {% block content %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="page-title-box d-flex">
+          <h4 class="page-title">Edit Reciver {{reciver.name}}</h4>
+          <div class="ml-auto mt-3">
+            <a href="{{url_for('index')}}" class="btn btn-info"> Back </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form autocomplete="off" method="POST" action="{{url_for('edit', id=reciver.id)}}">
+      <div class="form-group">
+          <label for="name">Name</label>
+          <input required name="name" value="{{reciver.name}}" type="text" id="name" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="items">Items</label>
+          <input required name="items" value="{{reciver.items}}" type="text" id="items" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="date">Date</label>
+          <input name="date" type="text" value="{{reciver.date}}" class="form-control" data-provide="datepicker" data-date-format="d-M-yyyy">
+      </div>
+      <div class="form-group">
+          <label for="manager">Manager</label>
+          <select required name="manager" class="form-control select2" data-toggle="select2">
+            <option value="" {% if reciver.manager == ''%} selected {%endif%}>Select Manager</option>
+            <option {% if reciver.manager == 'Pratik Deshmukh'%} selected {%endif%}>Pratik Deshmukh</option>
+            <option {% if reciver.manager == 'Tikaram Gahane'%} selected {%endif%}>Tikaram Gahane</option>
+            <option {% if reciver.manager == 'Satish Mungusmare'%} selected {%endif%}>Satish Mungusmare</option>
+            <option {% if reciver.manager == 'Gulshan Ukey'%} selected {%endif%}>Gulshan Ukey</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="money">Fees</label>
+          <input name="fees" value="{{reciver.fees}}" type="text" class="form-control" data-toggle="input-mask" data-mask-format="#.##0,00" data-reverse="true">
+      </div>
+      <div class="form-group">
+          <label for="date">Returning Date</label>
+          <input name="returning-date" value="{{reciver.returning_date}}" type="text" class="form-control" data-provide="datepicker" data-date-format="d-M-yyyy">
+      </div>
+      <div class="form-group">
+          <label for="manager">Fees Status</label>
+          <select required name="fees-status" class="form-control select2" data-toggle="select2">
+            <option value="" {% if reciver.fees_status == ''%} selected {%endif%}>Select Fees Status</option>
+              <option {% if reciver.fees_status == 'Unpaid'%} selected {%endif%}><i class="mdi mdi-circle text-danger"></i>Unpaid</option>
+              <option {% if reciver.fees_status == 'Paid'%} selected {%endif%}><i class="mdi mdi-circle text-success"></i>Paid</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="date">Return Date</label>
+          <input name="return-date" type="text" value="{{reciver.return_date}}" class="form-control" data-provide="datepicker" data-date-format="d-M-yyyy">
+        </div>
+      <div class="form-group">
+          <label for="manager">Return To</label>
+          <select name="return-to" class="form-control select2" data-toggle="select2">
+              <option value="" {% if reciver.return_to == ''%} selected {%endif%}>Select Manager</option>
+              <option {% if reciver.return_to == 'Pratik Deshmukh'%} selected {%endif%}>Pratik Deshmukh</option>
+              <option {% if reciver.return_to == 'Tikaram Gahane'%} selected {%endif%}>Tikaram Gahane</option>
+              <option {% if reciver.return_to == 'Satish Mungusmare'%} selected {%endif%}>Satish Mungusmare</option>
+              <option {% if reciver.return_to == 'Gulshan Ukey'%} selected {%endif%}>Gulshan Ukey</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-block btn-primary">Submit</button>
+    </form>
+  </div>
+{% endblock %}

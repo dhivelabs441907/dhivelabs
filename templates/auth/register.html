@@ -1,0 +1,119 @@
+{% extends "layout.html" %} {% block content %}
+<div class="account-pages mt-5 mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="card">
+          <!-- Logo-->
+          <div class="card-header text-center bg-primary">
+            <a href="index.html">
+              <span
+                ><img src="{{url_for('static', filename='images/d-hive-logo-dark.png')}}" alt="" height="90" width="150"
+              /></span>
+            </a>
+          </div>
+
+          <div class="card-body p-4">
+            <div class="text-center w-75 m-auto">
+              <h4 class="text-dark-50 text-center mt-0 font-weight-bold">
+                Free Sign Up
+              </h4>
+              <p class="text-muted mb-4">
+                {%if error%}
+                <p class="text-danger">{{error}}</p>
+                {%else%}
+                Don't have an account? Create your account, it takes less than a
+                minute
+                {%endif%}
+              </p>
+            </div>
+
+            <form method="POST" action="{{url_for('register')}}">
+              <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="firstname"
+                  placeholder="Enter your First Name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="lastname"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="emailaddress">Email address</label>
+                <input
+                  class="form-control"
+                  type="email"
+                  id="emailaddress"
+                  required
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  class="form-control"
+                  type="password"
+                  required
+                  id="password"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phonenumber">Mobile Number</label>
+                <input
+                  class="form-control"
+                  required
+                  id="phonenumber"
+                  data-mask-format="000 000 0000"
+                  data-toggle="input-mask"
+                  placeholder="Enter your Mobile Number"
+                />
+              </div>
+
+
+              <div class="form-group mb-0 text-center">
+                <button class="btn btn-primary" >Sign Up</button>
+              </div>
+            </form>
+          </div>
+          <!-- end card-body -->
+        </div>
+        <!-- end card -->
+
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <p class="text-muted">
+              Already have account?
+              <a href="{{url_for('login')}}" class="text-muted ml-1"
+                ><b>Log In</b></a
+              >
+            </p>
+          </div>
+          <!-- end col-->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</div>
+<!-- end page -->
+
+<footer class="footer footer-alt">2018 - 2020 © Hyper - Coderthemes.com</footer>
+{% endblock %}

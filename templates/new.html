@@ -1,0 +1,69 @@
+{% extends "layout-home.html" %} {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex">
+        <h4 class="page-title">New Reciver</h4>
+        <div class="ml-auto mt-3">
+          <a href="{{url_for('index')}}" class="btn btn-info"> Back </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form autocomplete="off" method="POST" action="{{url_for('new')}}">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input required name="name" type="text" id="name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="items">Items</label>
+        <input required name="items" type="text" id="items" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input name="date" type="text" class="form-control" data-provide="datepicker" data-date-format="d-M-yyyy">
+    </div>
+    <div class="form-group">
+        <label for="manager">Manager</label>
+        <select required name="manager" class="form-control select2" data-toggle="select2">
+            <option value="" selected disabled>Select Manager</option>
+            <option>Pratik Deshmukh</option>
+            <option>Tikaram Gahane</option>
+            <option>Satish Mungusmare</option>
+            <option>Gulshan Ukey</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="money">Fees</label>
+        <input name="fees" type="text" class="form-control" data-toggle="input-mask" data-mask-format="#.##0,00" data-reverse="true">
+    </div>
+    <div class="form-group">
+        <label for="date">Returning Date</label>
+        <input name="returning-date" type="text" class="form-control" data-provide="datepicker" data-date-format="d-M-yyyy">
+    </div>
+    <div class="form-group">
+        <label for="manager">Fees Status</label>
+        <select required name="fees-status" class="form-control select2" data-toggle="select2">
+          <option value="" selected disabled>Select Fees Status</option>
+            <option><i class="mdi mdi-circle text-danger"></i>Unpaid</option>
+            <option><i class="mdi mdi-circle text-success"></i>Paid</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="date">Return Date</label>
+        <input name="return-date" type="text" class="form-control" data-provide="datepicker" data-date-format="d-M-yyyy">
+      </div>
+    <div class="form-group">
+        <label for="manager">Return To</label>
+        <select name="return-to" class="form-control select2" data-toggle="select2">
+            <option value="" selected>Select Manager</option>
+            <option>Pratik Deshmukh</option>
+            <option>Tikaram Gahane</option>
+            <option>Satish Mungusmare</option>
+            <option>Gulshan Ukey</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

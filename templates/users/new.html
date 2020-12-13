@@ -1,0 +1,49 @@
+{% extends "layout-home.html" %} {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex">
+        <h4 class="page-title">New User</h4>
+        <div class="ml-auto mt-3">
+          <a href="{{url_for('users')}}" class="btn btn-info"> Back </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form autocomplete="off" method="POST" action="{{url_for('new_user')}}">
+    <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input required name="firstname" type="text" id="firstname" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input required name="lastname" type="text" id="lastname" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="mobile">Mobile Number</label>
+        <input name="mobile" type="text" class="form-control" maxlength="10" data-placement='top' data-toggle="maxlength">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input name="email" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input name="password" type="text" class="form-control">
+</div>
+    <div class="form-group">
+        <label for="role">Role</label>
+        <select required name="role" class="form-control select2" data-toggle="select2">
+            <option value="" selected disabled>Select Role</option>
+            <option>Founder</option>
+            <option>Co-Founder</option>
+            <option>Admin</option>
+            <option>Manager</option>
+            <option>Innovator</option>
+            <option>Student</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}
